@@ -39,11 +39,17 @@ function checkoout(items){
     if(occurance.B % 2 === 0){
         bTotal = occurance.B * 0.625
     }
+    if(occurance.B % 2 === 1){
+        bTotal = Math.floor(occurance.B / 2) * 2 * 0.625
+        bTotal += 0.75
+    }
     
     //if item C divisible by 3
-    if(occurance.C % 3 === 0) {
-        console.log("free item C")
-    }
+    //if(occurance.C % 3 === 0) {
+    //    console.log("free item C")
+    //}
+
+    
 
     const total = parseFloat(aTotal + bTotal + cTotal).toFixed(2)
 
@@ -59,4 +65,4 @@ function naNtoZero(val){
     }
 }
 
-checkoout(['C', 'C', 'C'])
+checkoout(['B', 'B', 'C', 'C', 'C'])
