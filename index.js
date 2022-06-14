@@ -3,7 +3,6 @@
 -Take in array of items A,B,C
 -Return price
 
-
 */
 
 console.log("Checkout Kata");
@@ -22,7 +21,7 @@ function checkoout(items, applyDiscount) {
 
   if (!applyDiscount) {
     let aTotal = naNtoZero((occurance.A * 50) / 100);
-    let bTotal = naNtoZero((occurance.A * 75) / 100);
+    let bTotal = naNtoZero((occurance.B * 75) / 100);
     let cTotal = naNtoZero((occurance.C * 25) / 100);
     const total = aTotal + bTotal + cTotal;
     console.log(occurance);
