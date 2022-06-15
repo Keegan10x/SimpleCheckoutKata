@@ -18,6 +18,20 @@ export function checkout(items, applyDiscount) {
     if(!(Array.isArray(items))) return 'No items array provided';
     //no discount status provided
     if((typeof applyDiscount != "boolean")) return 'No discount status provided';
+    //values other than A, B, C
+
+    if(items.length > 0){
+        let err = null
+        for(const item of items){
+            if(!(item == 'A' || item == 'B' || item == 'C')) {
+            err = true
+        }
+    }
+    if(err)return 'Invalid item provided'
+    }
+
+
+
 
   let occurance = {};
   //find the occurance of items
@@ -79,6 +93,6 @@ function naNtoZero(val) {
   }
 }
 
-const output = checkout(['A', 'A'], false)
+const output = checkout(['B', 'B', 'C'], true)
 const result = JSON.stringify(output, null, 2)
 console.log(output)
