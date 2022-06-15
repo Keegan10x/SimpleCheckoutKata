@@ -1,13 +1,24 @@
 /* Simple Checkout Kata
 
 -Take in array of items A,B,C
+-Taken in discount status
 -Return price
+-Return items in basket
 
 */
 
+
+
+
 console.log("Checkout Kata");
 
-function checkoout(items, applyDiscount) {
+export function checkout(items, applyDiscount) {
+
+    //no items array provided
+    if(!(Array.isArray(items))) return 'No items array provided';
+    //no discount status provided
+    if((typeof applyDiscount != "boolean")) return 'No discount status provided';
+
   let occurance = {};
   //find the occurance of items
   for (const item of items) {
@@ -23,9 +34,9 @@ function checkoout(items, applyDiscount) {
     let aTotal = naNtoZero((occurance.A * 50) / 100);
     let bTotal = naNtoZero((occurance.B * 75) / 100);
     let cTotal = naNtoZero((occurance.C * 25) / 100);
-    const total = aTotal + bTotal + cTotal;
-    console.log(occurance);
-    console.log("Fee in £: " + total);
+    const total = parseFloat(aTotal + bTotal + cTotal).toFixed(2);
+    return {Basket:occurance, Price:total}
+
   } else if (applyDiscount) {
     let aTotal = naNtoZero((occurance.A * 50) / 100);
     let bTotal = 0;
@@ -53,8 +64,10 @@ function checkoout(items, applyDiscount) {
     //}
 
     const total = parseFloat(aTotal + bTotal + cTotal).toFixed(2);
-    console.log(dealDisplay);
-    console.log("Fee in £: " + total);
+    //console.log("Items in basket: ", dealDisplay);
+    //console.log("Fee in £: " + total);
+    
+    return {Basket:dealDisplay, Price:total}
   }
 }
 
@@ -66,4 +79,6 @@ function naNtoZero(val) {
   }
 }
 
-checkoout(["B", "B", "C", "C", "C"], true);
+const output = checkout(['A', 'A'], false)
+const result = JSON.stringify(output, null, 2)
+console.log(output)
